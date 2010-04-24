@@ -17,11 +17,8 @@ h2. How To:
 
 h2. Examples:
 
-  @
-  // To autolink some text:
-  TwitterText.auto_link("This is a #tweet with a @username");
-  // => This is a <a href="http://twitter.com/search?q=tweet">#tweet</a> with a <a href="http://twitter.com/username">username</a>
-  @
+@TwitterText.auto_link("This is a #tweet with a @username");@
+@This is a <a href="http://twitter.com/search?q=tweet">#tweet</a> with a <a href="http://twitter.com/username">username</a>@
   
 h2. TODO:
 
