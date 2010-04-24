@@ -1,0 +1,29 @@
+h1. Twitter Text in javascript
+
+An autolinking and extracting library for use in the DOM.
+
+More info on twitter-text "here":http://engineering.twitter.com/2010/02/introducing-open-source-twitter-text.html
+
+Based of the "twitter-text-rb library":http://github.com/mzsanford/twitter-text-rb
+
+Main goal is to achieve 100 percent conformance.  More about conformance "here":http://github.com/mzsanford/twitter-text-conformance
+
+To run the conformance tests just open test/test.html in your browser.
+
+h2. How To:
+
+* Download the project from "github":http://github.com/rubymaverick/twitter-text-js.
+* Include the lib/twitter-text.js file in your html.
+
+h2. Examples:
+
+  @// To autolink some text:@
+  @TwitterText.auto_link("This is a #tweet with a @username");@
+  @// => This is a <a href="http://twitter.com/search?q=tweet">#tweet</a> with a <a href="http://twitter.com/username">username</a>@
+  
+h2. TODO:
+
+* Build the Extractor
+* Figure out the last couple of url regexp bugs
+* Convert to Node.js?
+  
