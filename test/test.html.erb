@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Test twitter-text-js</title>
+	<meta name="author" content="eric">
+  <link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="http://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
+  <script type="text/javascript" src="../lib/twitter-text.js"></script>
+  <script type="text/javascript" src="conformance/autolink.js"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+	// <![CDATA[
+	var auto_link = function(text){
+	  return TwitterText.auto_link(text, { 'suppress_no_follow': true });
+	}
+	
+	var extract_mentions = function(text){
+	  return TwitterText.extract_mentioned_screen_names(text);
+	}
+	
+	var extract_replies = function(text){
+	  return TwitterText.extract_reply_screen_name(text);
+	}
+	
+	var extract_urls = function(text){
+	  return TwitterText.extract_urls(text);
+	}
+	
+	var extract_hashtags = function(text){
+	  return TwitterText.extract_hashtags(text);
+	}
+	
+  module("Twitter AutoLink");
+  
+  var autolink_tests = <%= @autolink_json %>;
+  
+  var extract_tests = <%= @extract_json %>;
+  
+  test("testing all autolinking", function() {
+    var list = autolink_tests['tests']['all'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      equals( auto_link(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+  
+  test("testing autolink usernames", function() {
+    var list = autolink_tests['tests']['usernames'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      equals( auto_link(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+  
+  test("testing autolink lists", function() {
+    var list = autolink_tests['tests']['lists'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      equals( auto_link(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+  
+  test("testing autolink hashtags", function() {
+    var list = autolink_tests['tests']['hashtags'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      equals( auto_link(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+  
+  test("testing autolink urls", function() {
+    var list = autolink_tests['tests']['urls'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      equals( auto_link(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+  
+  test("testing extracting mentions", function() {
+    var list = extract_tests['tests']['mentions'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      same( extract_mentions(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+  
+  test("testing extracting replies", function() {
+    var list = extract_tests['tests']['replies'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      same( extract_replies(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+  
+  test("testing extracting urls", function() {
+    var list = extract_tests['tests']['urls'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      same( extract_urls(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+  
+  test("testing extracting hashtags", function() {
+    var list = extract_tests['tests']['hashtags'];
+    for (var i=0; i < list.length; i++) {
+      var obj = list[i];
+      same( extract_hashtags(obj['text']), obj['expected'], obj['description'] );
+    };
+  });
+
+	// ]]>
+	</script>
+	<!-- Date: 2010-04-23 -->
+</head>
+<body>
+<h1 id="qunit-header">QUnit example</h1>
+<h2 id="qunit-banner"></h2>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+</body>
+</html>

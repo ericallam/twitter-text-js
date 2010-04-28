@@ -15,6 +15,10 @@ h2. How To:
 * Download the project from "github":http://github.com/rubymaverick/twitter-text-js.
 * Include the lib/twitter-text.js file in your html.
 
+h2. Testing:
+
+* First, generate the test.html file by running @rake generate_tests@ in the project root.  This uses the test.html.erb file to generate tests, converting  the twitter-text-conformance yaml files to json and writing tests against those.  Then just open up test.html in your browser to run the tests.  If you change the test.html.erb file than you have to run @rake generate_tests@ again.
+
 h2. Examples:
 
 @TwitterText.auto_link("This is a #tweet with a @username");@
@@ -22,7 +26,6 @@ h2. Examples:
   
 h2. TODO:
 
-* Build the Extractor
 * Figure out the last couple of url regexp bugs
 * Convert to Node.js?
   
